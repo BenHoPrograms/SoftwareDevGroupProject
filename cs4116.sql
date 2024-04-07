@@ -23,6 +23,21 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+
+--
+-- Table structure for table `users` that holds all the websites users
+--
+
+	CREATE Table users (
+    	id INT(11) NOT NULL AUTO_INCREMENT,
+        name VARCHAR(40) NOT NULL,
+        pwd VARCHAR(255) NOT NULL,
+        email VARCHAR(100) NOT NULL,
+    	age INT(11) NOT NULL,
+        created_at DATETIME NOT NULL DEFAULT CURRENT_TIME,
+        PRIMARY KEY (id)   
+    );
+
 --
 -- Table structure for table `attribut`
 --
