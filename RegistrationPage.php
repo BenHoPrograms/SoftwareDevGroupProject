@@ -12,7 +12,7 @@
     
 <div class="container">
     <form action="">
-        <h1>CREATE an account</h1>
+        <h1><b>CREATE</b> an account</h1>
 
         <div class="box">
             <div class="input-box">
