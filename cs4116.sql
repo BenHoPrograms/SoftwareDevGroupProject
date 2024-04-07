@@ -130,7 +130,7 @@ CREATE TABLE `preference` (
 -- Table structure for table `profile`
 --
 
-CREATE TABLE `profile` (
+CREATE TABLE `profiles` (
   `numProfile` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
