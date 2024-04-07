@@ -23,21 +23,6 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
-
---
--- Table structure for table `users` that holds all the websites users
---
-
-	CREATE Table users (
-    	id INT(11) NOT NULL AUTO_INCREMENT,
-        name VARCHAR(40) NOT NULL,
-        pwd VARCHAR(255) NOT NULL,
-        email VARCHAR(100) NOT NULL,
-    	age INT(11) NOT NULL,
-        created_at DATETIME NOT NULL DEFAULT CURRENT_TIME,
-        PRIMARY KEY (id)   
-    );
-
 --
 -- Table structure for table `attribut`
 --
@@ -146,7 +131,7 @@ CREATE TABLE `preference` (
 --
 
 CREATE TABLE `profile` (
-  `numProfile` int(11) NOT NULL,
+  `numProfile` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
   `password` varchar(20) NOT NULL,
   `email` varchar(20) NOT NULL,
@@ -154,8 +139,10 @@ CREATE TABLE `profile` (
   `age` int(3) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `prefGender` varchar(10) NOT NULL,
-  `status` varchar(10) NOT NULL,
-  `datingNum` int(11) NOT NULL
+  `status` varchar(10) NOT NULL DEFAULT 'Unknown',
+  `datingNum` int(11) NOT NULL,
+  'created_at' DATETIME NOT NULL DEFAULT CURRENT_TIME,
+   PRIMARY KEY(numProfile)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
