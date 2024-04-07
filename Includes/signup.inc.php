@@ -20,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST")
 
         }
 
-        if(!IsEmailValid($email) 
+        if(!IsEmailValid($email)) 
         {
 
         }
@@ -29,7 +29,7 @@ if($_SERVER["REQUEST_METHOD"] === "POST")
         {
 
         }
-        if(IsUsernameTaken($pdo, $username)
+        if(IsUsernameTaken($pdo, $username)) 
         {
 
         }
