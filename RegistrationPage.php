@@ -16,8 +16,13 @@
 
         <div class="box">
             <div class="input-box">
-                <input type="text" placeholder="Email">
+                <input type="text" placeholder="Username">
                 <i class='bx bxs-user'></i>
+            </div>
+
+            <div class="input-box">
+                <input type="text" placeholder="Email">
+                <i class='bx bxs-edit-alt' ></i>
             </div>
 
             <div class="input-box">
@@ -28,6 +33,11 @@
             <div class="input-box">
                 <input type="text" placeholder="Confirm Password">
                 <i class='bx bxs-lock' ></i>
+            </div>
+
+            <div class="age-select">
+                AGE: 
+                <input type="number" list="quantities" min="18" max="140" placeholder="18">
             </div>
 
             <div class=license-terms>
