@@ -141,7 +141,7 @@ CREATE TABLE `profiles` (
   `prefGender` varchar(10) NOT NULL,
   `status` varchar(10) NOT NULL,
   `datingNum` int(11) NOT NULL,
-   created_at DATETIME NOT NULL DEFAULT CURRENT_TIME,
+   created_at DATETIME NOT NULL DEFAULT CURRENT_TIME
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 -- --------------------------------------------------------
 
