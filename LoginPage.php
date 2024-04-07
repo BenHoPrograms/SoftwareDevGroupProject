@@ -16,7 +16,7 @@
 
         <div class="box">
             <div class="input-box">
-                <input type="text" placeholder="Email">
+                <input type="text" placeholder="Username">
                 <i class='bx bxs-user'></i>
             </div>
 
