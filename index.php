@@ -1,7 +1,7 @@
 <?php
-    require_once 'includes/index.inc.php';
-    require_once 'includes/config_session.inc.php';
-    require_once 'includes/headers.inc.php';
+    require_once __DIR__."/Includes/index.inc.php";
+    require_once __DIR__."/Includes/config_session.inc.php";
+    require_once __DIR__."/Includes/headers.inc.php";
 ?>
 
 <!doctype html>
