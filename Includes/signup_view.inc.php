@@ -18,15 +18,6 @@
         }
     }
 
-    function SignUpSuccessMessage() 
-    {
-        if(isset($_GET["signup"]) && $_GET["signup"] == "success") 
-        {
-            echo '<br>';
-            echo '<p> Signup success! </p>';
-        }
-    }
-
     function SignUpInputs()
     {
         if(isset($_SESSION["signupData"]["username"]) && !isset($_SESSION["errors_signup"][3]))

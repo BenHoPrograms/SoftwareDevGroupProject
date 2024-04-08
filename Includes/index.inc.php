@@ -6,6 +6,14 @@
         exit;
     }
 
+    
+    if(isset($_POST['loginButton'])) 
+    {
+        header("Location: ../LoginPage.php");
+        exit;
+    }
+
+
 
     function SignUpSuccessMessage() 
     {
