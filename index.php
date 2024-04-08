@@ -1,5 +1,5 @@
 <?php
-    require_once 'includes/index_view.inc.php';
+    require_once 'includes/index.inc.php';
     require_once 'includes/config_session.inc.php';
 ?>
 
@@ -52,7 +52,9 @@
                     <!-- Sign Up -->
                     <div class="col-md-3">
                         <button type="button" class="btn btn-outline-danger me-2">Login</button>
-                        <button type="button" class="btn btn-danger">Sign-up</button>
+                        <form action="includes/index.inc.php" method="post">                
+                            <button type="submit" class="btn btn-danger" name="signupButton">Sign up</button>
+                        </form>
                     </div>
                 </header>
             </div>
@@ -63,7 +65,10 @@
                 <div class="col-lg-6 mx-auto">
                 <p class="lead mb-4">Here at vibe we want you to find love the social way <br> Find dates for yourself or dates for a friend <br> Already found a lover? Share your adventures here!</p>
                 <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                    <button type="button" class="btn btn-dark btn-lg px-4 gap-3">Sign Up</button>
+                    <form action="includes/index.inc.php" method="post">                
+                        <button type="submit" class="btn btn-dark btn-lg px-4 gap-3" name="signupButton">Sign up</button>
+                    </form>
+
                     <button type="button" class="btn btn-outline-dark btn-lg px-4">Login</button>
                 </div>
                 <div class="signupsuccess">
