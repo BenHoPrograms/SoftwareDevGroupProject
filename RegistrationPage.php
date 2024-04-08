@@ -37,7 +37,7 @@
 
             <!--Titles -->
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="/index.html" class="nav-link px-2 link-secondary">Home</a></li>
+                <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
                 <li><a href="/about.html" class="nav-link px-2 link-secondary">About</a></li>
                 <li><a href="/contact.html" class="nav-link px-2 link-secondary">Contact Us</a></li>
                 <li><a href="/dashboard.html" class="nav-link px-2 link-secondary">Profile</a></li>
@@ -45,7 +45,9 @@
 
                 <!-- Sign Up -->
             <div class="col-md-3">
-                <button type="button" class="btn btn-outline-danger me-2">Login</button>
+                <form action="includes/index.inc.php" method="post">                
+                <button type="submit" class="btn btn-outline-danger me-2" name="loginButton">Login</button>
+                </form>
                 <form action="includes/index.inc.php" method="post">                
                     <button type="submit" class="btn btn-danger" name="signupButton">Sign up</button>
                 </form>

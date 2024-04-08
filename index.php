@@ -51,7 +51,9 @@
 
                     <!-- Sign Up -->
                     <div class="col-md-3">
-                        <button type="button" class="btn btn-outline-danger me-2">Login</button>
+                        <form action="includes/index.inc.php" method="post">                
+                            <button type="submit" class="btn btn-outline-danger me-2" name="loginButton">Login</button>
+                        </form>
                         <form action="includes/index.inc.php" method="post">                
                             <button type="submit" class="btn btn-danger" name="signupButton">Sign up</button>
                         </form>
@@ -69,7 +71,9 @@
                         <button type="submit" class="btn btn-dark btn-lg px-4 gap-3" name="signupButton">Sign up</button>
                     </form>
 
-                    <button type="button" class="btn btn-outline-dark btn-lg px-4">Login</button>
+                    <form action="includes/index.inc.php" method="post">                
+                        <button type="submit" class="btn btn-outline-dark btn-lg px-4" name="loginButton">Login</button>
+                    </form>
                 </div>
                 <div class="signupsuccess">
                     <?php
