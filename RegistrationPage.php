@@ -20,30 +20,9 @@
         <h1><b>CREATE</b> an account</h1>
 
         <div class="box">
-            <div class="input-box">
-                <input type="text" name="username" placeholder="Username">
-                <i class='bx bxs-user'></i>
-            </div>
-
-            <div class="input-box">
-                <input type="text" name="email" placeholder="Email">
-                <i class='bx bxs-edit-alt' ></i>
-            </div>
-
-            <div class="input-box">
-                <input type="text" name="pwd" placeholder="Password">
-                <i class='bx bxs-lock-alt' ></i>
-            </div>
-
-            <div class="input-box">
-                <input type="text" placeholder="Confirm Password">
-                <i class='bx bxs-lock' ></i>
-            </div>
-
-            <div class="age-select">
-                AGE: 
-                <input type="number" list="quantities" min="18" max="140" placeholder="18" name="age">
-            </div>
+           <?php
+                SignUpInputs();
+           ?>
 
             <div class=license-terms>
                 <label>

@@ -16,7 +16,19 @@ function IsInputEmpty(string $username, string $email, string $password, string 
 
 function IsTermsAccepted($termsAccepted) 
 {
-    if (isset($_POST['termsAccepted'])) 
+    if (isset($termsAccepted))
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function IsConfirmPasswordCorrect(string $password, string $confirmPassword)
+{
+    if ($password == $confirmPassword) 
     {
         return true;
     }

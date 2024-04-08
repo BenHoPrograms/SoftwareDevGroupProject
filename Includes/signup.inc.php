@@ -1,11 +1,12 @@
 <?php
 
 //if user got to this page CORRECTLY (via post method).
-if($_SERVER["REQUEST_METHOD"] === "POST")
+if($_SERVER["REQUEST_METHOD"] == "POST")
 {
     $username = $_POST["username"];
     $email = $_POST["email"];
     $password = $_POST["pwd"];
+    $confirmPassword = $_POST["confirmPwd"];
     $age = $_POST["age"];
     $termsAccepted = $_POST["termsAccepted"];
 
@@ -39,7 +40,12 @@ if($_SERVER["REQUEST_METHOD"] === "POST")
 
         if (IsEmailRegistered($pdo, $email))
         {
-            $errors[3] = "Email already registered!";
+            $errors[4] = "Email already registered!";
+        }
+
+        if (!IsConfirmPasswordCorrect($password, $confirmPassword))
+        {
+            $errors[5] = "Passwords do not match";
         }
 
         require_once 'config_session.inc.php';
@@ -47,6 +53,10 @@ if($_SERVER["REQUEST_METHOD"] === "POST")
         if ($errors)
         {
             $_SESSION["errors_signup"] = $errors;
+
+            $signupData = ["username" => $username, "email" => $email, "age" => $age];
+            $_SESSION["signupData"] = $signupData;
+
             header("Location: ../RegistrationPage.php");
             die();
         }
