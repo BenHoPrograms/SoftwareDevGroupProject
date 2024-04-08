@@ -1,7 +1,13 @@
+<?php
+    require_once 'includes/login_view.inc.php';
+    require_once 'includes/config_session.inc.php';
+?>
+
+
 <html>
 
 <head>
-    <title> Login </title>
+    <title>Vibe - Login </title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
     <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
@@ -41,17 +47,23 @@
 
     <div class="container">
         <div class="wrapper">
-            <form action="">
+            <form action="includes/login.inc.php" method="post">
                 <h1>Welcome Back</h1>
+                
+                <div class="signupSuccess">
+                    <?php
+                        SignUpSuccessMessage();
+                    ?>
+                </div>
 
                 <div class="box">
                     <div class="input-box">
-                        <input type="text" placeholder="Email">
+                        <input type="text" placeholder="Username" name="username">
                         <i class='bx bxs-user'></i>
                     </div>
 
                     <div class="input-box">
-                        <input type="text" placeholder="Password">
+                        <input type="text" placeholder="Password" name="pwd">
                         <i class='bx bxs-lock-alt' ></i>
                     </div>
 
@@ -72,6 +84,9 @@
                     </div>
                 </div>
             </form>
+            <?php
+                CheckLoginErrors();
+            ?>
         </div>
     </div>
 

@@ -13,14 +13,12 @@
         exit;
     }
 
-
-
-    function SignUpSuccessMessage() 
+    function LogInSuccessMessage() 
     {
-        if(isset($_GET["signup"]) && $_GET["signup"] == "success") 
+        if(isset($_GET["login"]) && $_GET["login"] == "success") 
         {
             echo '<br>';
-            echo '<p> Signup success! </p>';
+            echo '<p> Login success! </p>';
         }
     }
 ?>

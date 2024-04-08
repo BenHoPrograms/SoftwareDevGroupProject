@@ -13,6 +13,7 @@ session_set_cookie_params([
 
 session_start();
 
+
 if (!isset($_SESSION["last_regeneration"]))
 {
     RegenerateSessionId();
@@ -30,6 +31,20 @@ else
 //A function to regenerate the session ID.
 function RegenerateSessionId()
 {
-    session_regenerate_id();
-    $_SESSION["last_regeneration"] = time();
+    if (isset($_SESSION["userId"])) 
+    {
+        session_regenerate_id(true);
+
+        $userId = $_SESSION["userId"];
+        $newSessionId = session_create_id;
+        $sessionId = $newSessionId . "_" . $userId;
+        session_id($sessionId);
+
+        $_SESSION["last_regeneration"] = time();
+    }
+    else 
+    {
+        session_regenerate_id(true);
+        $_SESSION["last_regeneration"] = time();
+    }
 }

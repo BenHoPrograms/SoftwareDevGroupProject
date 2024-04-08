@@ -77,7 +77,7 @@
 
                     <div class="already-have-an-account">
                         <p>You already have an account?
-                            <a href="#">Login here</a>
+                            <a href="LoginPage.php">Login here</a>
                         </p>    
                     </div>
                 </div>

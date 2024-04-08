@@ -75,9 +75,9 @@
                         <button type="submit" class="btn btn-outline-dark btn-lg px-4" name="loginButton">Login</button>
                     </form>
                 </div>
-                <div class="signupsuccess">
+                <div class="loginsuccess">
                     <?php
-                        SignUpSuccessMessage();
+                        LogInSuccessMessage();
                     ?>  
                 </div>
                 </div>
