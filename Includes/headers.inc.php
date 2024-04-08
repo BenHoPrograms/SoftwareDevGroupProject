@@ -28,11 +28,11 @@ function GoToProfilePageOrLogIn()
     if(isset($_SESSION["userId"])) 
     {
         echo 
-        '<li><a href="dashboard.php" class="nav-link px-2 link-secondary">Profile</a></li>';
+        '<li><a href="/dashboard.php" class="nav-link px-2 link-secondary">Profile</a></li>';
     }
     else
     {
         echo 
-        '<li><a href="LoginPage.php" class="nav-link px-2 link-secondary">Profile</a></li>';
+        '<li><a href="/LoginPage.php" class="nav-link px-2 link-secondary">Profile</a></li>';
     }
 }
