@@ -1,7 +1,7 @@
 <?php
-    __DIR__.require_once "Includes/signup_view.inc.php";
-    __DIR__.require_once "Includes/config_session.inc.php";
-    __DIR__.require_once "Includes/headers.inc.php";
+    __DIR__.require_once "/Includes/signup_view.inc.php";
+    __DIR__.require_once "/Includes/config_session.inc.php";
+    __DIR__.require_once "/Includes/headers.inc.php";
 ?>
 
 <html>

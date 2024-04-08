@@ -1,7 +1,7 @@
 <?php
-    require_once __DIR__."Includes/login_view.inc.php";
-    require_once __DIR__."Includes/config_session.inc.php";
-    require_once __DIR__."Includes/headers.inc.php";
+    require_once __DIR__."/Includes/login_view.inc.php";
+    require_once __DIR__."/Includes/config_session.inc.php";
+    require_once __DIR__."/Includes/headers.inc.php";
 ?>
 
 
