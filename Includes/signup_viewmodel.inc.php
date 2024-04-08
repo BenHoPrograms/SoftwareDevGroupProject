@@ -66,8 +66,9 @@ function CreateUser(object $pdo, string $username, string $password, string $ema
 {
     try 
     {
-        $ageAsInt = (int)$age
-        SetUser($pdo, $username, $password, $email, $ageAsInt);
+        $pwd = $password;
+        $age = (int)$age;
+        SetUser($pdo, $username, $pwd, $email, $age);
     }
     catch(PDOException $e)
     {

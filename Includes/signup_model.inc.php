@@ -35,8 +35,8 @@ function SetUser(object $pdo, string $username, string $pwd, string $email, int 
     $hashedPwd = password_hash($pwd, PASSWORD_BCRYPT, $options);
 
     $statement->bindParam(":username", $username);
-    $statement->bindParam(":email", $email);
     $statement->bindParam(":pwd", $hashedPwd);
+    $statement->bindParam(":email", $email);
     $statement->bindParam(":age", $age);
     $statement->execute();
 }
