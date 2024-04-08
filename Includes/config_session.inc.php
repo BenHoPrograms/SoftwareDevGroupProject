@@ -21,7 +21,7 @@ if (!isset($_SESSION["last_regeneration"]))
 else 
 {
     $interval = 60 * 30; //30 x 60 seconds (equal to 30 mins) = how much seconds that needs to be passed before condition is met.
-    if (time() - $_SESSION["last_regeneration"]) >= $interval)
+    if (time() - $_SESSION["last_regeneration"] >= $interval)
     {
         RegenerateSessionId();
     }

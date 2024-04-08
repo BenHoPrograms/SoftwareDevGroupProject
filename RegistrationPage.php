@@ -1,3 +1,8 @@
+<?php
+    require_once 'includes/signup_view.inc.php';
+    require_once 'includes/config_session.inc.php';
+?>
+
 <html>
 
 <head>
@@ -42,7 +47,7 @@
 
             <div class=license-terms>
                 <label>
-                    <input type="checkbox"> I agree to the license terms </input>
+                    <input type="checkbox" name="termsAccepted"> I agree to the license terms </input>
                 </label>
             </div>
 
@@ -56,8 +61,12 @@
                 </p>    
             </div>
         </div>
-
     </form>
+
+    <?php
+        CheckRegistrationErrors();
+    ?>
+
 </div>
 
 </body>

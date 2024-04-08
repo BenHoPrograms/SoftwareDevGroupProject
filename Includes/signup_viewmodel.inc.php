@@ -2,7 +2,7 @@
 
 declare(strict_types=1); //type declarations set to true.
 
-function IsInputEmpty(string $username, string $email, string $password, int $age) 
+function IsInputEmpty(string $username, string $email, string $password, string $age) 
 {
     if (empty($username) || empty($email) || empty($password) || empty($age)) 
     {
@@ -14,9 +14,9 @@ function IsInputEmpty(string $username, string $email, string $password, int $ag
     }
 }
 
-function IsTermsAccepted(bool $termsAccepted) 
+function IsTermsAccepted($termsAccepted) 
 {
-    if ($termsAccepted) 
+    if (isset($_POST['termsAccepted'])) 
     {
         return true;
     }
@@ -47,5 +47,30 @@ function IsUsernameTaken(object $pdo, string $username)
     else
     {
         return false;
+    }
+}
+
+function IsEmailRegistered(object $pdo, string $email) 
+{
+    if (GetEmail($pdo, $email)) 
+    {
+        return true;
+    }
+    else
+    {
+        return false;
+    }
+}
+
+function CreateUser(object $pdo, string $username, string $password, string $email, string $age) 
+{
+    try 
+    {
+        $ageAsInt = (int)$age
+        SetUser($pdo, $username, $password, $email, $ageAsInt);
+    }
+    catch(PDOException $e)
+    {
+        die("Couldn't create user: " . $e->getMessage());
     }
 }

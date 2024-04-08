@@ -127,13 +127,13 @@ CREATE TABLE `preference` (
 -- --------------------------------------------------------
 
 --
--- Table structure for table `profile`
+-- Table structure for table `profiles`
 --
 
 CREATE TABLE `profiles` (
   `numProfile` int(11) NOT NULL AUTO_INCREMENT,
   `username` varchar(20) NOT NULL,
-  `password` varchar(20) NOT NULL,
+  `pwd` varchar(20) NOT NULL,
   `email` varchar(20) NOT NULL,
   `name` varchar(20) NOT NULL,
   `age` int(3) NOT NULL,
@@ -141,8 +141,10 @@ CREATE TABLE `profiles` (
   `prefGender` varchar(10) NOT NULL,
   `status` varchar(10) NOT NULL,
   `datingNum` int(11) NOT NULL,
-   created_at DATETIME NOT NULL DEFAULT CURRENT_TIME
+   created_at DATETIME NOT NULL DEFAULT CURRENT_TIME,
+   PRIMARY KEY(numProfile)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 -- --------------------------------------------------------
 
 --
@@ -220,12 +222,6 @@ ALTER TABLE `preference`
   ADD KEY `numAttribut` (`numAttribut`);
 
 --
--- Indexes for table `profile`
---
-ALTER TABLE `profile`
-  ADD PRIMARY KEY (`numProfile`);
-
---
 -- Indexes for table `textgroup`
 --
 ALTER TABLE `textgroup`
@@ -239,7 +235,7 @@ ALTER TABLE `textgroup`
 -- Constraints for table `banned`
 --
 ALTER TABLE `banned`
-  ADD CONSTRAINT `banned_ibfk_1` FOREIGN KEY (`numProfile`) REFERENCES `profile` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `banned_ibfk_1` FOREIGN KEY (`numProfile`) REFERENCES `profiles` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `banned_ibfk_2` FOREIGN KEY (`bannedBy`) REFERENCES `isadmin` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -252,7 +248,7 @@ ALTER TABLE `chat`
 -- Constraints for table `dislike`
 --
 ALTER TABLE `dislike`
-  ADD CONSTRAINT `dislike_ibfk_1` FOREIGN KEY (`numProfile`) REFERENCES `profile` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `dislike_ibfk_1` FOREIGN KEY (`numProfile`) REFERENCES `profiles` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `dislike_ibfk_2` FOREIGN KEY (`numAttribut`) REFERENCES `attribut` (`numAttribut`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
@@ -260,33 +256,33 @@ ALTER TABLE `dislike`
 --
 ALTER TABLE `intextgroup`
   ADD CONSTRAINT `intextgroup_ibfk_1` FOREIGN KEY (`numGroup`) REFERENCES `textgroup` (`numGroup`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `intextgroup_ibfk_2` FOREIGN KEY (`numProfile`) REFERENCES `profile` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `intextgroup_ibfk_2` FOREIGN KEY (`numProfile`) REFERENCES `profiles` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `isadmin`
 --
 ALTER TABLE `isadmin`
-  ADD CONSTRAINT `isadmin_ibfk_1` FOREIGN KEY (`numProfile`) REFERENCES `profile` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `isadmin_ibfk_1` FOREIGN KEY (`numProfile`) REFERENCES `profiles` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `isfriends`
 --
 ALTER TABLE `isfriends`
-  ADD CONSTRAINT `isfriends_ibfk_1` FOREIGN KEY (`numProfile1`) REFERENCES `profile` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `isfriends_ibfk_2` FOREIGN KEY (`numProfile2`) REFERENCES `profile` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `isfriends_ibfk_1` FOREIGN KEY (`numProfile1`) REFERENCES `profiles` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `isfriends_ibfk_2` FOREIGN KEY (`numProfile2`) REFERENCES `profiles` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `likes`
 --
 ALTER TABLE `likes`
-  ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`numProfile`) REFERENCES `profile` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`likesProfile`) REFERENCES `profile` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `likes_ibfk_1` FOREIGN KEY (`numProfile`) REFERENCES `profiles` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `likes_ibfk_2` FOREIGN KEY (`likesProfile`) REFERENCES `profiles` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `preference`
 --
 ALTER TABLE `preference`
-  ADD CONSTRAINT `preference_ibfk_1` FOREIGN KEY (`numProfile`) REFERENCES `profile` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `preference_ibfk_1` FOREIGN KEY (`numProfile`) REFERENCES `profiles` (`numProfile`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `preference_ibfk_2` FOREIGN KEY (`numAttribut`) REFERENCES `attribut` (`numAttribut`) ON DELETE CASCADE ON UPDATE CASCADE;
 COMMIT;
 
