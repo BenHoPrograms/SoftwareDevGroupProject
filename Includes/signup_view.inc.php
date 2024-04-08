@@ -20,7 +20,7 @@
 
     function SignUpInputs()
     {
-        if(isset($_SESSION["signupData"]["username"]) && !isset($_SESSION["errors_signup"][3]))
+        if(isset($_SESSION["signupData"]["username"]) && !isset($_SESSION["errors_signup"]["usernameTaken"]))
         {
             echo 
             '<div class="input-box">
@@ -36,7 +36,7 @@
                 <i class="bx bxs-user"></i>
             </div>';
         }
-        if(isset($_SESSION["signupData"]["email"]) && (!isset($_SESSION["errors_signup"][1]) || !isset($_SESSION["errors_signup"][4])))
+        if(isset($_SESSION["signupData"]["email"]) && (!isset($_SESSION["errors_signup"]["invalidEmail"]) || !isset($_SESSION["errors_signup"]["emailAlreadyRegistered"])))
         {
             echo 
             '<div class="input-box">

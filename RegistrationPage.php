@@ -1,7 +1,7 @@
 <?php
-    __DIR__.require_once "/Includes/signup_view.inc.php";
-    __DIR__.require_once "/Includes/config_session.inc.php";
-    __DIR__.require_once "/Includes/headers.inc.php";
+    require_once __DIR__."/Includes/signup_view.inc.php";
+    require_once __DIR__."/Includes/config_session.inc.php";
+    require_once __DIR__."/Includes/headers.inc.php";
 ?>
 
 <html>
@@ -57,7 +57,7 @@
     </div>
     <div class="container">
         <div class="wrapper">
-            <form action="includes/signup.inc.php" method="post">
+            <form action="/Includes/signup.inc.php" method="post">
                 <h1><b>CREATE</b> an account</h1>
 
                 <div class="box">

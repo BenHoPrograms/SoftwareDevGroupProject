@@ -49,7 +49,7 @@
 
     <div class="container">
         <div class="wrapper">
-            <form action="includes/login.inc.php" method="post">
+            <form action="/Includes/login.inc.php" method="post">
                 <h1>Welcome Back</h1>
                 
                 <div class="signupSuccess">
