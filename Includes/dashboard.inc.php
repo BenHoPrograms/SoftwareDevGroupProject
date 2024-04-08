@@ -6,8 +6,8 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     try 
     {
-        require_once 'dbh.inc.php';
-        require_once 'dashboard_model.inc.php';
+        require_once __DIR__."/dbh.inc.php";
+        require_once __DIR__."/dashboard_model.inc.php";
         $usersWithSimilarUsernames = GetSimilarUsers($pdo, $searched);
     }
     catch(PDOException $e)

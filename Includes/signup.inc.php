@@ -12,9 +12,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     try
     {
-        require_once 'dbh.inc.php';
-        require_once 'signup_model.inc.php';
-        require_once 'signup_viewmodel.inc.php';
+        require_once __DIR__."/dbh.inc.php";
+        require_once __DIR__."/signup_model.inc.php";
+        require_once __DIR__."/signup_viewmodel.inc.php";
 
         $errors = [];
         // Error handlers
@@ -48,7 +48,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $errors[5] = "Passwords do not match";
         }
 
-        require_once 'config_session.inc.php';
+        require_once __DIR__."/config_session.inc.php";
 
         if ($errors)
         {

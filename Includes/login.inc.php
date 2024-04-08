@@ -7,9 +7,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
     try
     {
-        require_once 'dbh.inc.php';
-        require_once 'login_model.inc.php';
-        require_once 'login_viewmodel.inc.php';
+        require_once __DIR__.'/dbh.inc.php';
+        require_once __DIR__.'/login_model.inc.php';
+        require_once __DIR__.'/login_viewmodel.inc.php';
 
         $errors = [];
         // Error handlers
