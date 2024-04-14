@@ -234,7 +234,7 @@
                             <div class = "row">
                                 <div class = "col-sm-3">
                                     <nav class="navbar navbar-light bg-dark">
-                                        <form action="includes/dashboard.inc.php" method="post">
+                                        <form action="/Includes/dashboard.inc.php" method="post">
                                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='searched'>
                                         <button class="btn btn-outline-success mx-2 my-2 my-sm-0" type="submit">Search</button>
                                         </form>

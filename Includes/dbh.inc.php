@@ -1,9 +1,9 @@
 <?php
 
-$host = 'localhost';
-$dbname = 'vibe';
-$dbusername = 'root';
-$dbpassword = '';
+$host = 'sql205.infinityfree.com';
+$dbname = 'if0_36187460_vibe';
+$dbusername = 'if0_36187460';
+$dbpassword = 'JtsqOUVCggV';
 
 try
 {

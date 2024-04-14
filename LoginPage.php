@@ -65,7 +65,7 @@
                     </div>
 
                     <div class="input-box">
-                        <input type="text" placeholder="Password" name="pwd">
+                        <input type="password" placeholder="Password" name="pwd">
                         <i class='bx bxs-lock-alt' ></i>
                     </div>
 

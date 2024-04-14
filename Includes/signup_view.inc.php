@@ -54,12 +54,12 @@
         }
 
         echo '<div class="input-box">
-        <input type="text" name="pwd" placeholder="Password">
+        <input type="password" name="pwd" pattern=".{8,}" required title="Password must be at least 8 characters" placeholder="Password">
         <i class="bx bxs-lock-alt" ></i>
     </div>
 
     <div class="input-box">
-        <input type="text" name="confirmPwd" placeholder="Confirm Password">
+        <input type="password" name="confirmPwd" placeholder="Confirm Password">
         <i class="bx bxs-lock" ></i>
     </div>';
 
@@ -76,7 +76,7 @@
             echo
             '<div class="age-select">
                 AGE: 
-                <input type="number" list="quantities" min="18" max="140" placeholder="18" name="age">
+                <input type="number" list="quantities" min="18" max="140" placeholder="0" name="age">
             </div>';
-        }
+        };
     }

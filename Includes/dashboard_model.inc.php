@@ -8,8 +8,12 @@ function GetSimilarUsers(object $pdo, string $username)
     $statement->bindParam(':username', $keyword_to_search);
     $statement->execute();
 
+    echo"<pre> You have searched for users: ".$username. "</pre>";
     while ($r=$statement->fetch(PDO::FETCH_ASSOC)) 
     {
-        echo"<pre>".print_r($r,true)."</pre>";;
+        foreach($r as $key => $value)
+        {
+            echo"<pre> User Found: ".$value."</pre>";
+        }
     }
 }

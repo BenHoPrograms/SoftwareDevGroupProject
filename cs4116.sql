@@ -132,10 +132,10 @@ CREATE TABLE `preference` (
 
 CREATE TABLE `profiles` (
   `numProfile` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(30) NOT NULL,
+  `username` varchar(20) NOT NULL,
   `pwd` varchar(255) NOT NULL,
-  `email` varchar(100) NOT NULL,
-  `name` varchar(30) NOT NULL,
+  `email` varchar(20) NOT NULL,
+  `name` varchar(20) NOT NULL,
   `age` int(3) NOT NULL,
   `gender` varchar(10) NOT NULL,
   `prefGender` varchar(10) NOT NULL,
