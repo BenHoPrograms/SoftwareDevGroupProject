@@ -67,9 +67,9 @@
                     <div class="gender-select">
                         GENDER:
                         <select class="gender-box" name="gender">
-                            <option value="">Male</option>
-                            <option value="">Female</option>
-                            <option value="">Other</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
+                            <option value="Other">Other</option>
                         </select>
                     </div>
 
