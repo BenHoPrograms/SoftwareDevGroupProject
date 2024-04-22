@@ -27,6 +27,8 @@
         <meta name="keywords" content = "Vibe, Dating, Dates">
         <meta name="robots" content = "NOINDEX, NOFOLLOW">
 
+        <link rel="stylesheet" href="dashboard.css">
+
         <title>Vibe - Dashboard</title>
     </head>
     
@@ -241,10 +243,11 @@
                                     </nav>
                                 </div>
                                 <div class = "col-sm-3">
-                                    <label for="customRange1" class="form-label">Age (X years)</label>
-                                    <input type="range" class="form-range" id="customRange1"> 
-                                    <label for="customRange2" class="form-label">Location (Xkm)</label>
-                                    <input type="range" class="form-range" id="customRange2"> 
+                                    <form action="" method="post">
+                                        <label for="age-filter" class="form-label">Age</label>
+                                        <input type="range" class="form-range" id="age-filter"> 
+                                        <input type="submit" value="Search for age" class="age-search" name="age-search">  
+                                    </form>
                                 </div>
                                 <div class = "col-sm-6">
                                     <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
@@ -259,6 +262,13 @@
                                     <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
                                     <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
+                                <form action="" method="post" class="search-by-gender">
+                                            Search by gender
+                                            <input type="checkbox"/>
+                                            <input type="submit" value="Male" class="gender-search" name="male-search">
+                                            <input type="submit" value="Female" class="gender-search" name="female-search"> 
+                                            <input type="submit" value="Other" class="gender-search" name="other-search">  
+                                    </form>
                                 </div>
                             </div>
 
