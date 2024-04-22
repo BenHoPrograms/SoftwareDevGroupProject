@@ -250,18 +250,6 @@
                                     </form>
                                 </div>
                                 <div class = "col-sm-6">
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
-                                    <button type="button" class="btn btn-danger" data-bs-toggle="button" autocomplete="off mx-1 my-5">Toggle button</button>
                                 <form action="" method="post" class="search-by-gender">
                                             Search by gender
                                             <input type="checkbox"/>
