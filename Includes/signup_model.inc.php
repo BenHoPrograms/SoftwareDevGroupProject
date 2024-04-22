@@ -26,9 +26,9 @@ function GetEmail(object $pdo, string $email)
     return $result;
 }
 
-function SetUser(object $pdo, string $username, string $pwd, string $email, int $age) 
+function SetUser(object $pdo, string $username, string $pwd, string $email, int $age, string $gender) 
 {
-    $query = "INSERT INTO profiles (username, pwd, email, age) VALUES(:username, :pwd, :email, :age);";
+    $query = "INSERT INTO profiles (username, pwd, email, age, gender) VALUES(:username, :pwd, :email, :age, :gender);";
     $statement = $pdo->prepare($query);
 
     $options = ['cost' => 12];
@@ -38,5 +38,6 @@ function SetUser(object $pdo, string $username, string $pwd, string $email, int 
     $statement->bindParam(":pwd", $hashedPwd);
     $statement->bindParam(":email", $email);
     $statement->bindParam(":age", $age);
+    $statement->bindParam(":gender", $gender);
     $statement->execute();
 }

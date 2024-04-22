@@ -9,6 +9,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $confirmPassword = $_POST["confirmPwd"];
     $age = $_POST["age"];
     $termsAccepted = $_POST["termsAccepted"];
+    $gender = $_POST["gender"];
 
     try
     {
@@ -18,7 +19,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
         $errors = [];
         // Error handlers
-        if (IsInputEmpty($username, $email, $password, $age))
+        if (IsInputEmpty($username, $email, $password, $age, $gender))
         {
             $errors[0] = "All fields are not filled!";
         }
@@ -61,7 +62,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             die();
         }
 
-        CreateUser($pdo, $username, $password, $email, $age);
+        CreateUser($pdo, $username, $password, $email, $age, $gender);
 
         header("Location: ../LoginPage.php?signup=success");
 

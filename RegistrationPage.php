@@ -64,6 +64,14 @@
                     <?php
                             SignUpInputs();
                     ?>
+                    <div class="gender-select">
+                        GENDER:
+                        <select class="gender-box" name="gender">
+                            <option value="">Male</option>
+                            <option value="">Female</option>
+                            <option value="">Other</option>
+                        </select>
+                    </div>
 
                     <div class=license-terms>
                         <label>

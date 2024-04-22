@@ -2,9 +2,9 @@
 
 declare(strict_types=1); //type declarations set to true.
 
-function IsInputEmpty(string $username, string $email, string $password, string $age) 
+function IsInputEmpty(string $username, string $email, string $password, string $age, string $gender) 
 {
-    if (empty($username) || empty($email) || empty($password) || empty($age)) 
+    if (empty($username) || empty($email) || empty($password) || empty($age) || empty($gender)) 
     {
         return true;
     }
@@ -74,13 +74,13 @@ function IsEmailRegistered(object $pdo, string $email)
     }
 }
 
-function CreateUser(object $pdo, string $username, string $password, string $email, string $age) 
+function CreateUser(object $pdo, string $username, string $password, string $email, string $age, $gender) 
 {
     try 
     {
         $pwd = $password;
         $age = (int)$age;
-        SetUser($pdo, $username, $pwd, $email, $age);
+        SetUser($pdo, $username, $pwd, $email, $age, $gender);
     }
     catch(PDOException $e)
     {
