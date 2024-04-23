@@ -47,6 +47,7 @@
                         <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
                         <li><a href="about.php" class="nav-link px-2 link-secondary">About</a></li>
                         <li><a href="contact.php" class="nav-link px-2 link-secondary">Contact Us</a></li>
+                        <li><a href="ProfilePage.html" class="nav-link px-2 link-secondary">ProfilePage</a></li>
                         <?php
                             GoToProfilePageOrLogIn();
                         ?>
