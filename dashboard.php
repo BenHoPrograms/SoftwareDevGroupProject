@@ -244,14 +244,14 @@
                                     </nav>
                                 </div>
                                 <div class = "col-sm-3">
-                                    <form action="./Includes/dashboard_age_search.php" method="post">
+                                    <form action="/Includes/dashboard_age_search.php" method="post">
                                         <label for="age-filter" class="form-label">Age</label>
                                         <input type="number" value="18" class="age-search" name="age-searched"> 
                                         <input type="submit" value="Search for age" class="age-search" name="age-search-button">  
                                     </form>
                                 </div>
                                 <div class = "col-sm-6">
-                                <form action="./Includes/dashboard_gender_search.php" method="post" class="search-by-gender">
+                                <form action="/Includes/dashboard_gender_search.php" method="post" class="search-by-gender">
                                             Search by gender
                                             <input type="submit" value="Male" class="gender-search" name="male-search">
                                             <input type="submit" value="Female" class="gender-search" name="female-search"> 
