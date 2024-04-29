@@ -1,6 +1,8 @@
 <?php
     require_once __DIR__."/Includes/config_session.inc.php";
     require_once __DIR__."/Includes/headers.inc.php";
+    require_once __DIR__."/Includes/dashboard_model.inc.php";
+    require_once __DIR__."/Includes/dbh.inc.php";
 
     if(!isset($_SESSION["userId"])) 
     {
@@ -237,7 +239,7 @@
                             <div class = "row">
                                 <div class = "col-sm-3">
                                     <nav class="navbar navbar-light bg-dark">
-                                        <form action="/Includes/dashboard.inc.php" method="post">
+                                        <form action="./Includes/dashboard.inc.php" method="post">
                                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='searched'>
                                         <button class="btn btn-outline-success mx-2 my-2 my-sm-0" type="submit">Search</button>
                                         </form>
@@ -262,88 +264,9 @@
 
                         <!-- Recommended Content -->
                         <div class="card-group my-3">
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-                            
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-group my-3">
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-                            
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-                        </div>
+                                <?php
+                                PrintRecommendationCards($pdo);
+                                ?>
                     </div>
                     <!-- Likes You Tab-->
                     <div class="tab-pane fade p-3" id="nav-likesYou" role="tabpanel" aria-labelledby="nav-likesYou-tab">
