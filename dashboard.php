@@ -91,6 +91,10 @@
                         <button class="nav-link" id="nav-groups-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-groups" type="button" role="tab" aria-controls="nav-groups"
                         aria selected="false">Groups</button>
+
+                        <button class="nav-link" id="nav-tempLikesYou-tab" data-bs-toggle="tab"
+                        data-bs-target="#nav-LikesYou" type="button" role="tab" aria-controls="nav-LikesYou"
+                        aria selected="false">LikesYou</button>
                         
                     </div>
                 </nav>
@@ -215,6 +219,28 @@
                             </div>
                         </div>
                     </div>
+
+                    <!-- Temp LikesYou Tab -->
+                    <div class="tab-pane fade p-3" id="nav-LikesYou" role="tabpanel" aria-labelledby="nav-LikesYou-tab">
+                        
+                        <div class="card mb-3" style="max-width: 540px;">
+                            <div class="row g-0">
+                              <div class="col-md-4">
+                                <img src="https://picsum.photos/200/200" class="img-fluid rounded">
+                              </div>
+                              <div class="col-md-8">
+                                <div class="card-body">
+                                  <h5 class="card-title">Username</h5>
+                                  
+                                  <input class="btn btn-danger" type="button" value="Accept">
+                                <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+
+                    </div>
+
                 </div>
             </div>
             
