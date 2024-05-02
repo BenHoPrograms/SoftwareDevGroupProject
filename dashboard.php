@@ -247,24 +247,31 @@
                     <div class="tab-pane fade show active p-3" id="nav-recommended" role="tabpanel" aria-labelledby="nav-recommended-tab">
                         <!-- Filters -->
                             <div class = "row">
-                                <div class = "col-sm-3">
-                                    <nav class="navbar navbar-light bg-dark">
+                                <div class = "col-sm-4">
+                                    <nav class="navbar navbar-light">
                                         <form action="./Includes/dashboard.inc.php" method="post">
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='searched'>
-                                        <button class="btn btn-outline-success mx-2 my-2 my-sm-0" type="submit">Search</button>
+                                            <div class="row ">
+                                                <div class="col">
+                                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name='searched' aria-describedby="button-search">
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-outline-light mx-0 my-2 my-sm-0" type="submit">Search</button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </nav>
                                 </div>
-                                <div class = "col-sm-3">
+                                <div class = "col-sm-4">
                                     <form action="/Includes/dashboard_age_search.php" method="post">
                                         <label for="age-filter" class="form-label">Age</label>
                                         <input type="number" value="18" class="age-search" name="age-searched"> 
                                         <input type="submit" value="Search for age" class="age-search" name="age-search-button">  
                                     </form>
                                 </div>
-                                <div class = "col-sm-6">
+                                <div class = "col-sm-4">
                                 <form action="/Includes/dashboard_gender_search.php" method="post" class="search-by-gender">
                                             Search by gender
+                                            <br>
                                             <input type="submit" value="Male" class="gender-search" name="male-search">
                                             <input type="submit" value="Female" class="gender-search" name="female-search"> 
                                             <input type="submit" value="Other" class="gender-search" name="other-search">  
