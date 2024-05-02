@@ -1,14 +1,14 @@
 <?php
-    //require_once __DIR__."/Includes/config_session.inc.php";
+    require_once __DIR__."/Includes/config_session.inc.php";
     require_once __DIR__."/Includes/headers.inc.php";
     require_once __DIR__."/Includes/dashboard_model.inc.php";
-    //require_once __DIR__."/Includes/dbh.inc.php";
+    require_once __DIR__."/Includes/dbh.inc.php";
 
-    //if(!isset($_SESSION["userId"])) 
-    //{
-    //    header("Location: index.php");
-    //    exit();
-    //}
+    if(!isset($_SESSION["userId"])) 
+    {
+        header("Location: index.php");
+        exit();
+    }
 ?>
 
 <!doctype html>
