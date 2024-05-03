@@ -308,8 +308,10 @@
                         <!-- Recommended Content -->
                         <div class="card-group my-3">
                                 <?php
+
                                 PrintRecommendationCards($pdo);
                                 ?>
+                        </div>
                     </div>
                     <!-- Likes You Tab-->
                     <div class="tab-pane fade p-3" id="nav-likesYou" role="tabpanel" aria-labelledby="nav-likesYou-tab">
