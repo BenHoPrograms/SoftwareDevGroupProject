@@ -60,7 +60,7 @@
                         <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
                         <li><a href="about.php" class="nav-link px-2 link-secondary">About</a></li>
                         <li><a href="contact.php" class="nav-link px-2 link-secondary">Contact Us</a></li>
-                        <li><a href="ProfilePage.html" class="nav-link px-2 link-secondary">ProfilePage</a></li>
+                        <li><a href="profile.php" class="nav-link px-2 link-secondary">ProfilePage</a></li>
                         <?php
                             GoToProfilePageOrLogIn();
                         ?>
@@ -257,9 +257,7 @@
                         data-bs-target="#nav-recommended" type="button" role="tab" aria-controls="nav-recommended"
                         aria selected="true">Recommended</button>
 
-                        <button class="nav-link" id="nav-likesYou-tab" data-bs-toggle="tab"
-                        data-bs-target="#nav-likesYou" type="button" role="tab" aria-controls="nav-likesYou"
-                        aria selected="false">LikesYou</button>
+                        
 
                         <button class="nav-link" id="nav-matchmaker-tab" data-bs-toggle="tab"
                         data-bs-target="#nav-matchmaker" type="button" role="tab" aria-controls="nav-matchmaker"
@@ -316,102 +314,7 @@
                                     ?>
                             </div>
                     </div>
-                    <!-- Likes You Tab-->
-                    <div class="tab-pane fade p-3" id="nav-likesYou" role="tabpanel" aria-labelledby="nav-likesYou-tab">
-                        <div class="card-group my-3">
-                            <div class = "col-sm-3">
-                                <div class="card mx-4 my-2">
-                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <input class="btn btn-danger" type="button" value="Accept">
-                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "col-sm-3">
-                                <div class="card mx-4 my-2">
-                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <input class="btn btn-danger" type="button" value="Accept">
-                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "col-sm-3">
-                                <div class="card mx-4 my-2">
-                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <input class="btn btn-danger" type="button" value="Accept">
-                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "col-sm-3">
-                                <div class="card mx-4 my-2">
-                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <input class="btn btn-danger" type="button" value="Accept">
-                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-group my-3">
-                            <div class = "col-sm-3">
-                                <div class="card mx-4 my-2">
-                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <input class="btn btn-danger" type="button" value="Accept">
-                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "col-sm-3">
-                                <div class="card mx-4 my-2">
-                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <input class="btn btn-danger" type="button" value="Accept">
-                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "col-sm-3">
-                                <div class="card mx-4 my-2">
-                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <input class="btn btn-danger" type="button" value="Accept">
-                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
-                                    </div>
-                                </div>
-                            </div>
-                            <div class = "col-sm-3">
-                                <div class="card mx-4 my-2">
-                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
-                                    <div class="card-body">
-                                    <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-                                    <input class="btn btn-danger" type="button" value="Accept">
-                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                    
                     <!-- Matchmaker Tab -->
                     <div class="tab-pane fade p-3" id="nav-matchmaker" role="tabpanel" aria-labelledby="nav-matchmaker-tab">
                         <h2>Enter a friends username</h2>
