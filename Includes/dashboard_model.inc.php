@@ -93,6 +93,7 @@ function PrintRecommendationCards($pdo)
             if(array_key_exists('match'.$value, $_POST)) { 
                 sendMatchResquest($pdo, $_SESSION["userId"], $user); 
             }
+
             if($increment % 5 == 1)
             {
                 echo "</div>";

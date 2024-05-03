@@ -10,6 +10,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $age = $_POST["age"];
     $termsAccepted = $_POST["termsAccepted"];
     $gender = $_POST["gender"];
+    $profilePic = $_POST["profilePic"];
 
     try
     {
@@ -19,7 +20,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
         $errors = [];
         // Error handlers
-        if (IsInputEmpty($username, $email, $password, $age, $gender))
+        if (IsInputEmpty($username, $email, $password, $age, $gender, $profilePic))
         {
             $errors[0] = "All fields are not filled!";
         }
@@ -48,6 +49,11 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
         {
             $errors[5] = "Passwords do not match";
         }
+        
+        if (!IsProfilePicImage($profilePic)) 
+        {
+            $errors[6] = "File uploaded is not an image";
+        }
 
         require_once __DIR__."/config_session.inc.php";
 
@@ -62,7 +68,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             die();
         }
 
-        CreateUser($pdo, $username, $password, $email, $age, $gender);
+        CreateUser($pdo, $username, $password, $email, $age, $gender, $profilePic);
 
         header("Location: ../LoginPage.php?signup=success");
 

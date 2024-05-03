@@ -38,10 +38,9 @@
 
             <!--Titles -->
             <ul class="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
-                <li><a href="index.php" class="nav-link px-2 link-secondary">Home</a></li>
-                <li><a href="about.php" class="nav-link px-2 link-secondary">About</a></li>
-                <li><a href="contact.php" class="nav-link px-2 link-secondary">Contact Us</a></li>
-                <li><a href="ProfilePage.html" class="nav-link px-2 link-secondary">ProfilePage</a></li>
+                <li><a href="./index.php" class="nav-link px-2 link-secondary">Home</a></li>
+                <li><a href="./about.php" class="nav-link px-2 link-secondary">About</a></li>
+                <li><a href="./contact.php" class="nav-link px-2 link-secondary">Contact Us</a></li>
                 <?php
                     GoToProfilePageOrLogIn();
                 ?>
@@ -65,6 +64,14 @@
                     <?php
                             SignUpInputs();
                     ?>
+
+                    <div class="profile-image-select">
+                        PROFILE PHOTO:
+                        <div>
+                            <input type="file" name="profilePic" id="profilePic">
+                        </div>
+                    </div>
+                    
                     <div class="gender-select">
                         GENDER:
                         <select class="gender-box" name="gender">

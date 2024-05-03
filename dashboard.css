@@ -1,6 +1,0 @@
-input[type="checkbox"] ~ input {
-    display: none;
-}
-input[type="checkbox"]:checked ~ input {
-    display: inline-block;
-}

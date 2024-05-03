@@ -12,7 +12,7 @@
 </head>
 <body>
     <?php
-    /*// Start a session to store user data across pages
+    // Start a session to store user data across pages
     session_start();
 
     // Check if the form has been submitted and the "save-name" button is clicked
@@ -31,7 +31,8 @@
     $name = isset($_SESSION['name']) ? $_SESSION['name'] : "John Mulligan";
 
     // Use the session description if available, otherwise use a default description
-    $description = isset($_SESSION['description']) ? $_SESSION['description'] : "Hi I'm John. I like long walks on the beach.";*/
+
+    $description = isset($_SESSION['description']) ? $_SESSION['description'] : "Hi I'm John. I like long walks on the beach.";
     ?>
 
     <!-- Header-->
