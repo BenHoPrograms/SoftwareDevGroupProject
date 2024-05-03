@@ -31,6 +31,7 @@
     $name = isset($_SESSION['name']) ? $_SESSION['name'] : "John Mulligan";
 
     // Use the session description if available, otherwise use a default description
+
     $description = isset($_SESSION['description']) ? $_SESSION['description'] : "Hi I'm John. I like long walks on the beach.";
     ?>
 

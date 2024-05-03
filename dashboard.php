@@ -3,12 +3,17 @@
     require_once __DIR__."/Includes/headers.inc.php";
     require_once __DIR__."/Includes/dashboard_model.inc.php";
     require_once __DIR__."/Includes/dbh.inc.php";
+    require_once __DIR__."/Includes/chatSystem.inc.php";
+    require_once __DIR__."/Includes/matchSystem.inc.php";
+
 
     if(!isset($_SESSION["userId"])) 
     {
         header("Location: index.php");
         exit();
+
     }
+    //$_SESSION["userId"] = 65;
 ?>
 
 <!doctype html>
@@ -169,38 +174,37 @@
                         </div>
                     </div>
                     <!-- Matches -->
-                    <div class="tab-pane fade p-3" id="nav-matches" role="tabpanel" aria-labelledby="nav-matches-tab">
-                        <div class="card mb-3" style="max-width: 540px;">
-                            <div class="row g-0">
-                              <div class="col-md-4">
-                                <img src="https://picsum.photos/200/200" class="img-fluid rounded">
-                              </div>
-                              <div class="col-md-8">
-                                <div class="card-body">
-                                  <h5 class="card-title">Username</h5>
-                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                  <input class="btn btn-danger" type="button" value="Message">
-                                  
-                                </div>
-                              </div>
-                            </div>
-                        </div>
 
-                        <div class="card mb-3" style="max-width: 540px;">
-                            <div class="row g-0">
-                              <div class="col-md-4">
-                                <img src="https://picsum.photos/200/200" class="img-fluid rounded">
-                              </div>
-                              <div class="col-md-8">
-                                <div class="card-body">
-                                  <h5 class="card-title">Username</h5>
-                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                  <input class="btn btn-danger" type="button" value="Message">
-                                  
-                                </div>
-                              </div>
-                            </div>
-                        </div>
+                    <div class="tab-pane fade p-3" id="nav-matches" role="tabpanel" aria-labelledby="nav-matches-tab">
+                        <?php
+                            $accept = "";
+                            $reject = "";
+
+                            if($list = getListOfMatch($pdo, $_SESSION["userId"])){
+                                if($list["numProfile"]==$_SESSION["userId"]){
+                                    $other = $list["likesProfile"];
+                                }else{
+                                    $other = $list["numProfile"];
+                                }
+
+                                if($list["status"]=="pending"){
+                                    PrintMatchCard($pdo, $other, true);
+                                    $accept="Accept".$other;
+                                    $reject="Reject".$other;
+                                }else{
+                                    PrintMatchCard($pdo, $other, false);
+                                }
+                            }
+
+                            //if(array_key_exists($accept, $_POST)) { 
+                            if(isset($_POST[$accept])){
+                                acceptMatch($pdo, (int)$_SESSION["userId"], (int)$other); 
+                            }
+                            if(isset($_POST[$reject])) {
+                                rejectMatch($pdo, (int)$_SESSION["userId"], (int)$other); 
+                            }
+                        ?>
+
                     </div>
                     <!-- Groups -->
                     <div class="tab-pane fade p-3" id="nav-groups" role="tabpanel" aria-labelledby="nav-groups-tab">

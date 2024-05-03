@@ -77,9 +77,23 @@ function PrintRecommendationCards($pdo)
                         <h5 class='card-title text-danger'>" .$value. "</h5>
                         <br> <br> <br> <br> <br> <br> <br> <br>
                         <p class='card-text'>List of Interests</p>
-                        <button type='button' class='btn btn-danger btn-sm'>Send Match</button>
+                        <form method='post'>
+                            <button type='submit' class='btn btn-danger btn-sm' name='match".$value."'>Send Match</button>
+                        </form>
                     </div>
                 </div>";
+
+            $query2 = 'SELECT numProfile FROM `profiles` WHERE username = "'.$value.'"';
+            $statement2 = $pdo->prepare($query2);
+            $statement2->execute();
+            if($r2=$statement2->fetch(PDO::FETCH_ASSOC)){
+                $user = $r2["numProfile"];
+            }
+
+            if(array_key_exists('match'.$value, $_POST)) { 
+                sendMatchResquest($pdo, $_SESSION["userId"], $user); 
+            }
+
             if($increment % 5 == 1)
             {
                 echo "</div>";
