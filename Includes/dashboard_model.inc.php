@@ -56,7 +56,7 @@ function GetAgeUsers(object $pdo, int $age)
 
 function PrintRecommendationCards($pdo) 
 {
-    $query = "SELECT username FROM `profiles` ORDER BY RAND()";
+    $query = "SELECT username, profileImage FROM `profiles` ORDER BY RAND()";
     $statement = $pdo->prepare($query);
     $statement->execute();
     
@@ -72,9 +72,9 @@ function PrintRecommendationCards($pdo)
             }
             echo"                    
                 <div class='card bg-dark text-white mx-2'>
-                    <img src='https://picsum.photos/200/300' class='img-fluid rounded'>
+                    <img src='" .$value['profileImage']. "' class='img-fluid rounded'>
                     <div class='card-img-overlay'>
-                        <h5 class='card-title text-danger'>" .$value. "</h5>
+                        <h5 class='card-title text-danger'>" .$value['username']. "</h5>
                         <br> <br> <br> <br> <br> <br> <br> <br>
                         <p class='card-text'>List of Interests</p>
                         <button type='button' class='btn btn-danger btn-sm'>Send Match</button>

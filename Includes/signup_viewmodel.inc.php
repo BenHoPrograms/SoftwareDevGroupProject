@@ -14,10 +14,9 @@ function IsInputEmpty(string $username, string $email, string $password, string 
     }
 }
 
-function IsProfilePicImage($profilePic) 
+function IsProfilePicImage($imageFileType) 
 {
-    $extension = pathinfo($profilePic, PATHINFO_EXTENSION);
-    if ($extension == "jpg" || $extension == "png" || $extension == "jpeg")
+    if ($imageFileType == "jpg" || $imageFileType == "png" || $imageFileType == "jpeg")
     {
         return true;
     }

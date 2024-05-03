@@ -57,7 +57,7 @@
     </div>
     <div class="container">
         <div class="wrapper">
-            <form action="/Includes/signup.inc.php" method="post">
+            <form action="/Includes/signup.inc.php" method="post" enctype="multipart/form-data">
                 <h1><b>CREATE</b> an account</h1>
 
                 <div class="box">

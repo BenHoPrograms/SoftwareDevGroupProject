@@ -10,7 +10,17 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
     $age = $_POST["age"];
     $termsAccepted = $_POST["termsAccepted"];
     $gender = $_POST["gender"];
-    $profilePic = $_POST["profilePic"];
+
+    $img = $_FILES['profilePic']
+
+    $imgName = $_FILES['profilePic']['name'];
+    $imgSize = $_FILES['profilePic']['size'];
+    $imgTmpName = $_FILES['profilePic']['tmp_name'];
+    $imgError = $_FILES['profilePic']['error'];
+
+    $imgExt = explode('.', $imgName);
+    $imgActualExt = strtolower(end($imgExt));
+
 
     try
     {
@@ -20,7 +30,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
 
         $errors = [];
         // Error handlers
-        if (IsInputEmpty($username, $email, $password, $age, $gender, $profilePic))
+        if (IsInputEmpty($username, $email, $password, $age, $gender, $target_file))
         {
             $errors[0] = "All fields are not filled!";
         }
@@ -50,9 +60,19 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             $errors[5] = "Passwords do not match";
         }
         
-        if (!IsProfilePicImage($profilePic)) 
+        if (!IsProfilePicImage($imageExt)) 
         {
             $errors[6] = "File uploaded is not an image";
+        }
+
+        if ($imgError == 1)
+        {
+            $errors[7] = "There was an error uploading your file";
+        }
+
+        if ($imgSize > 10000) 
+        {
+            $errors[8] = "The file size is too big!";    
         }
 
         require_once __DIR__."/config_session.inc.php";
@@ -68,7 +88,13 @@ if($_SERVER["REQUEST_METHOD"] == "POST")
             die();
         }
 
-        CreateUser($pdo, $username, $password, $email, $age, $gender, $profilePic);
+        $imgNameNew = uniqid('', true).".".$imgActualExt;
+        
+        $imgDestination = "../Images/".$imgNameNew;
+
+        move_uploaded_file($imgTmpName, $imgDestination);
+
+        CreateUser($pdo, $username, $password, $email, $age, $gender, $imgDestination);
 
         header("Location: ../LoginPage.php?signup=success");
 
