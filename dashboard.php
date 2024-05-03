@@ -1,12 +1,18 @@
 <?php
     require_once __DIR__."/Includes/config_session.inc.php";
     require_once __DIR__."/Includes/headers.inc.php";
+    require_once __DIR__."/Includes/dashboard_model.inc.php";
+    require_once __DIR__."/Includes/dbh.inc.php";
+    require_once __DIR__."/Includes/chatSystem.inc.php";
+    require_once __DIR__."/Includes/matchSystem.inc.php";
 
     if(!isset($_SESSION["userId"])) 
     {
         header("Location: index.php");
         exit();
+
     }
+    //$_SESSION["userId"] = 65;
 ?>
 
 <!doctype html>
@@ -108,6 +114,7 @@
                                     <div class="card-body">
                                       <h5 class="card-title">Username</h5>
                                       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                      <input class="btn btn-danger" type="button" value="Message">
                                     </div>
                                   </div>
                                 </div>
@@ -122,6 +129,8 @@
                                     <div class="card-body">
                                       <h5 class="card-title">Username</h5>
                                       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                      <input class="btn btn-danger" type="button" value="Message">
+                                      
                                     </div>
                                   </div>
                                 </div>
@@ -136,6 +145,7 @@
                                     <div class="card-body">
                                       <h5 class="card-title">Username</h5>
                                       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                      <input class="btn btn-danger" type="button" value="Message">
                                     </div>
                                   </div>
                                 </div>
@@ -150,6 +160,7 @@
                                     <div class="card-body">
                                       <h5 class="card-title">Username</h5>
                                       <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                      <input class="btn btn-danger" type="button" value="Message">
                                     </div>
                                   </div>
                                 </div>
@@ -158,34 +169,36 @@
                         </div>
                     </div>
                     <!-- Matches -->
-                    <div class="tab-pane fade p-3" id="nav-matches" role="tabpanel" aria-labelledby="nav-matches-tab">
-                        <div class="card mb-3" style="max-width: 540px;">
-                            <div class="row g-0">
-                              <div class="col-md-4">
-                                <img src="https://picsum.photos/200/200" class="img-fluid rounded">
-                              </div>
-                              <div class="col-md-8">
-                                <div class="card-body">
-                                  <h5 class="card-title">Username</h5>
-                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
 
-                        <div class="card mb-3" style="max-width: 540px;">
-                            <div class="row g-0">
-                              <div class="col-md-4">
-                                <img src="https://picsum.photos/200/200" class="img-fluid rounded">
-                              </div>
-                              <div class="col-md-8">
-                                <div class="card-body">
-                                  <h5 class="card-title">Username</h5>
-                                  <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-                                </div>
-                              </div>
-                            </div>
-                        </div>
+                    <div class="tab-pane fade p-3" id="nav-matches" role="tabpanel" aria-labelledby="nav-matches-tab">
+                        <?php
+                            $accept = "";
+                            $reject = "";
+
+                            if($list = getListOfMatch($pdo, $_SESSION["userId"])){
+                                if($list["numProfile"]==$_SESSION["userId"]){
+                                    $other = $list["likesProfile"];
+                                }else{
+                                    $other = $list["numProfile"];
+                                }
+
+                                if($list["status"]=="pending"){
+                                    PrintMatchCard($pdo, $other, true);
+                                    $accept="Accept".$other;
+                                    $reject="Reject".$other;
+                                }else{
+                                    PrintMatchCard($pdo, $other, false);
+                                }
+                            }
+
+                            //if(array_key_exists($accept, $_POST)) { 
+                            if(isset($_POST[$accept])){
+                                acceptMatch($pdo, (int)$_SESSION["userId"], (int)$other); 
+                            }
+                            if(isset($_POST[$reject])) {
+                                rejectMatch($pdo, (int)$_SESSION["userId"], (int)$other); 
+                            }
+                        ?>
                     </div>
                     <!-- Groups -->
                     <div class="tab-pane fade p-3" id="nav-groups" role="tabpanel" aria-labelledby="nav-groups-tab">
@@ -198,6 +211,7 @@
                                 <div class="card-body">
                                   <h5 class="card-title">Username</h5>
                                   <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                  <input class="btn btn-danger" type="button" value="Message">
                                 </div>
                               </div>
                             </div>
@@ -235,25 +249,31 @@
                     <div class="tab-pane fade show active p-3" id="nav-recommended" role="tabpanel" aria-labelledby="nav-recommended-tab">
                         <!-- Filters -->
                             <div class = "row">
-                                <div class = "col-sm-3">
-                                    <nav class="navbar navbar-light bg-dark">
-                                        <form action="/Includes/dashboard.inc.php" method="post">
-                                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search" name='searched'>
-                                        <button class="btn btn-outline-success mx-2 my-2 my-sm-0" type="submit">Search</button>
+                                <div class = "col-sm-4">
+                                    <nav class="navbar navbar-light">
+                                        <form action="./Includes/dashboard.inc.php" method="post">
+                                            <div class="row ">
+                                                <div class="col">
+                                                    <input class="form-control" type="search" placeholder="Search" aria-label="Search" name='searched' aria-describedby="button-search">
+                                                </div>
+                                                <div class="col">
+                                                    <button class="btn btn-outline-light mx-0 my-2 my-sm-0" type="submit">Search</button>
+                                                </div>
+                                            </div>
                                         </form>
                                     </nav>
                                 </div>
-                                <div class = "col-sm-3">
-                                    <form action="" method="post">
+                                <div class = "col-sm-4">
+                                    <form action="/Includes/dashboard_age_search.php" method="post">
                                         <label for="age-filter" class="form-label">Age</label>
-                                        <input type="range" class="form-range" id="age-filter"> 
-                                        <input type="submit" value="Search for age" class="age-search" name="age-search">  
+                                        <input type="number" value="18" class="age-search" name="age-searched"> 
+                                        <input type="submit" value="Search for age" class="age-search" name="age-search-button">  
                                     </form>
                                 </div>
-                                <div class = "col-sm-6">
-                                <form action="" method="post" class="search-by-gender">
+                                <div class = "col-sm-4">
+                                <form action="/Includes/dashboard_gender_search.php" method="post" class="search-by-gender">
                                             Search by gender
-                                            <input type="checkbox"/>
+                                            <br>
                                             <input type="submit" value="Male" class="gender-search" name="male-search">
                                             <input type="submit" value="Female" class="gender-search" name="female-search"> 
                                             <input type="submit" value="Other" class="gender-search" name="other-search">  
@@ -263,129 +283,54 @@
 
                         <!-- Recommended Content -->
                         <div class="card-group my-3">
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-                            
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="card-group my-3">
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-                            
-                            <div class="card bg-dark text-white mx-2">
-                                <img src="https://picsum.photos/200/300" class="img-fluid rounded">
-                                <div class="card-img-overlay">
-                                  <h5 class="card-title text-danger">Name</h5>
-                                  <br> <br> <br> <br> <br> <br> <br> <br>
-                                  <p class="card-text">List of Interests</p>
-                                  <button type="button" class="btn btn-danger btn-sm">Send Match</button>
-                                </div>
-                            </div>
-                        </div>
+                                <?php
+                                PrintRecommendationCards($pdo);
+                                ?>
                     </div>
                     <!-- Likes You Tab-->
                     <div class="tab-pane fade p-3" id="nav-likesYou" role="tabpanel" aria-labelledby="nav-likesYou-tab">
                         <div class="card-group my-3">
                             <div class = "col-sm-3">
                                 <div class="card mx-4 my-2">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                    <input class="btn btn-danger" type="button" value="Accept">
+                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
                                     </div>
                                 </div>
                             </div>
                             <div class = "col-sm-3">
                                 <div class="card mx-4 my-2">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                    <input class="btn btn-danger" type="button" value="Accept">
+                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
                                     </div>
                                 </div>
                             </div>
                             <div class = "col-sm-3">
                                 <div class="card mx-4 my-2">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                    <input class="btn btn-danger" type="button" value="Accept">
+                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
                                     </div>
                                 </div>
                             </div>
                             <div class = "col-sm-3">
                                 <div class="card mx-4 my-2">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                    <input class="btn btn-danger" type="button" value="Accept">
+                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
                                     </div>
                                 </div>
                             </div>
@@ -394,41 +339,45 @@
                         <div class="card-group my-3">
                             <div class = "col-sm-3">
                                 <div class="card mx-4 my-2">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                    <input class="btn btn-danger" type="button" value="Accept">
+                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
                                     </div>
                                 </div>
                             </div>
                             <div class = "col-sm-3">
                                 <div class="card mx-4 my-2">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                    <input class="btn btn-danger" type="button" value="Accept">
+                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
                                     </div>
                                 </div>
                             </div>
                             <div class = "col-sm-3">
                                 <div class="card mx-4 my-2">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                    <input class="btn btn-danger" type="button" value="Accept">
+                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
                                     </div>
                                 </div>
                             </div>
                             <div class = "col-sm-3">
                                 <div class="card mx-4 my-2">
-                                    <img src="..." class="card-img-top" alt="...">
+                                    <img src="https://picsum.photos/200/300" class="card-img-top" alt="...">
                                     <div class="card-body">
                                     <h5 class="card-title">Card title</h5>
-                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                                    <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                                    <input class="btn btn-danger" type="button" value="Accept">
+                                    <input class="btn btn-outline-secondary my-2" type="button" value="Reject">
                                     </div>
                                 </div>
                             </div>
