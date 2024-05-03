@@ -138,6 +138,7 @@ CREATE TABLE `profiles` (
   `name` varchar(20) NOT NULL,
   `age` int(3) NOT NULL,
   `gender` varchar(10) NOT NULL,
+  `profileImage` varchar(255) NOT NULL,
   `prefGender` varchar(10) NOT NULL,
   `status` varchar(10) NOT NULL,
   `datingNum` int(11) NOT NULL,
